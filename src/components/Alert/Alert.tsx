@@ -1,14 +1,16 @@
 import { ReactNode } from "react";
 import "./index.scss";
 import { X,  } from 'lucide-react';
+import { AlertType } from "../Types";
 
 interface IProps {
-  type:string,
+  type: AlertType,
   icon: ReactNode,
   title:string,
-  description:string,
+  description?:string,
+  children?: ReactNode
 }
-function Alert({type="alert-succes",icon,title,description}: IProps) {
+function Alert({type="alert-succes",icon,title,description,children}: IProps) {
   return (
     <section className={type}>
       <div className="alert-header">
@@ -18,7 +20,7 @@ function Alert({type="alert-succes",icon,title,description}: IProps) {
         </div>
           <X className="close" size={23}/>
       </div>
-      <p>{description}</p>
+      {children ? children : <p>{description}</p>}
     </section>
   );
 }
