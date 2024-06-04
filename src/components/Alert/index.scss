@@ -1,0 +1,64 @@
+//? Defulalt
+$defulalt-borderColor: #9f9696;
+$defulalt-errorBg: #433f3f;
+$defulalt-errorColor: #c5c2c2;
+
+//? Info
+$info-borderColor: #a79d9d;
+$info-errorBg: rgba(7, 36, 75, 0.388);
+$info-errorColor: #0a58eafa;
+
+//? Warning
+$warnin-gborderColor: #240c0c;
+$warnin-gerrorBg: rgb(74, 76, 10);
+$warnin-gerrorColor: #d1d415fa;
+
+//? Error
+$error-borderColor: #8d2323;
+$error-errorBg: rgb(33, 14, 14);
+$error-errorColor: #ef8d8dfa;
+
+//? Succes
+$succes-borderColor: #173b07;
+$succes-errorBg: rgb(11, 55, 25);
+$succes-errorColor: #2ba518fa;
+
+@mixin alert($name, $border,$BgColor,$color) {
+  .#{$name}{
+    border:2px dotted $border;
+    border-radius: 0.6rem;
+    padding: 1.4rem;
+    background-color: $BgColor;
+    color:$color;
+
+    .alert-header{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .title{
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+    }
+    p{
+      margin-top: 1.3rem;
+      font-size: 0.9rem;
+      line-height: 1.5rem;
+      font-weight: 600;
+    }
+    span svg{
+      margin-right: 0.8rem;
+    }
+    .close{
+      cursor: pointer;
+    }
+  }
+}
+
+@include alert('alert-defulalt', $defulalt-borderColor,  $defulalt-errorBg, $defulalt-errorColor );
+@include alert('alert-info',$info-borderColor,$info-errorBg,$info-errorColor );
+@include alert('alert-warning',$warnin-gborderColor, $warnin-gerrorBg,$warnin-gerrorColor );
+@include alert('alert-error',$error-borderColor, $error-errorBg,$error-errorColor);
+
+@include alert('alert-succes',$succes-borderColor, $succes-errorBg,$succes-errorColor);
